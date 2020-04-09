@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race Fuel BR</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style type="text/css">
+        body { background: hsl(0, 0%, 0%) !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+        h2 {color: rgb(255, 255, 255) }
+        p {color: rgb(255, 255, 255) }
+        h3 {color: rgb(255, 255, 255) }
+        .centroAlin {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            }
+
+     </style>
+</head>
+
+<body > 
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+
+            <div class="col-sm-center">
+                
+  
+                <img src="https://i.imgur.com/WTdluqRl.png" class="img-fluid" alt="Logo">
+                <!--  <h3 class="centroAlin">Calculadora de combustivel ACC</h3><br>    -->
+                <form class="centroAlin">
+                    <p>
+                    Tempo corrida:   hh:mm
+                    <input type="time" class="form-control" id="tempocorrida" value="00:20" onclick="resultado()" 
+                    onfocusout="resultado()">
+                  
+                    
+                    Tempo volta:     mm:ss
+                    <input type="time" class="form-control" id="tempovolta" value="01:20" onclick="resultado()"
+                    onfocusout="resultado()">
+                  
+                    Consumo litros por volta
+                    <input type="number" class="form-control" id="consumo" min="1" max="20" step="0.01"  
+                     onclick="resultado()" onfocusout="resultado()" onsubmit="submeter()">
+                    </p>
+                   
+                    
+
+                </form>
+            
+        <div class="row justify-content-center">
+            <div class="col-sm-center">
+            <!--    <button type="button" onclick="resultado()" class="btn btn-danger">Resultado</button>  -->
+                <p>Número de <strong id="resultadovoltas">00</strong> Voltas</p>
+                <p>Necessário  <strong id="resultado">00</strong> Litros</p>
+                <p>Considere 8 litros adicional =  <strong id="resultadoadicional">00</strong> Litros</p>
+            </div>
+
+        </div>
+
+                    
+    </div>
+            
+
+
+
+    <script>
+
+
+        function carregar(){
+          //  var x = document.cookie;
+
+            document.getElementById("consumo").value=x;
+            
+        }
+
+        function submeter(){
+
+            x = document.getElementById("consumo").value;
+
+        }
+        
+        
+    
+
+            
+
+
+        function resultado(){
+            let tempocorrida = document.getElementById("tempocorrida").value; 
+            let segtempocorrida = (Number(tempocorrida[0]+tempocorrida[1])*3600)+(Number (tempocorrida[3]+tempocorrida[4])*60);
+
+            let tempovolta = document.getElementById("tempovolta").value;
+            let segtempovolta = (Number(tempovolta[0]+tempovolta[1])*60)+(Number (tempovolta[3]+tempovolta[4])) ;
+
+            let voltas = Math.ceil(segtempocorrida/segtempovolta);
+
+            let consumo = parseFloat(document.getElementById("consumo").value);
+
+            let resultado = (voltas*consumo).toFixed(2)
+           
+            
+            
+            document.getElementById("resultado").innerHTML = resultado;
+            document.getElementById("resultadovoltas").innerHTML = voltas;
+            document.getElementById("resultadoadicional").innerHTML = (parseFloat(resultado)+8).toFixed(2);
+            
+            
+          
+            console.log(`Tempo Corrida em segundos = ${segtempocorrida}`);
+            console.log(`Tempo Volta em segundos = ${segtempovolta}`);
+            console.log(`Tempo Corrida = ${tempocorrida}`);
+            console.log(`Tempo Volta = ${tempovolta}`);
+            console.log(`Número Voltas = ${voltas}`);
+            console.log(`Resultado soma = ${resultado}`);
+            console.log(`Resultado x = ${x}`);
+        }   
+
+
+        
+     </script>
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+</body>
+</html>

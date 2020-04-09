@@ -1,0 +1,17 @@
+___________________________________________________________
+
+Instalação Visual Code 
+
+Instalar: extensão tradução e linguagens 
+
+Configurar: Auto save, em preferencias habilitar word wrap
+___________________________________________________________
+
+Intalação git
+
+Manter na mesma pasta
+Selecionar emulador Visual Code
+
+____________________________________________________________
+
+Instalação do https://desktop.github.com/
