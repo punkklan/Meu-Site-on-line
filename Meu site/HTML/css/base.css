@@ -1,0 +1,10 @@
+
+body { background: hsl(0, 0%, 0%) !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+        h2 {color: rgb(255, 255, 255) }
+        p {color: rgb(255, 255, 255) }
+        h3 {color: rgb(255, 255, 255) }
+        .centroAlin {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            }
